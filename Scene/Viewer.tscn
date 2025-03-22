@@ -1,0 +1,182 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwtxg3augffs5"]
+
+[ext_resource type="Script" uid="uid://8qvl5gmcq0pt" path="res://Scripts/Viewer.cs" id="1_kmpuo"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("_dataSourceContainer", "_framesContainer", "_partContainer", "_animationSourceContainer", "_currentFrame", "_frameInfoLabel", "_nextButton", "_playButton", "_prevButton", "_resetButton", "_pauseButton", "_timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kmpuo")
+_dataSourceContainer = NodePath("Contain/Resource/ScrollContainer/DataSource")
+_framesContainer = NodePath("Contain/Frames/Frames/FramesContainer")
+_partContainer = NodePath("Contain/Parts/ScrollContainer/Parts")
+_animationSourceContainer = NodePath("Contain/Animations/ScrollContainer/AnimationSource")
+_currentFrame = NodePath("Contain/Frame/Frame/CurrentFrame")
+_frameInfoLabel = NodePath("Contain/Frame/Frame/FrameInfo")
+_nextButton = NodePath("Contain/Frame/Frame/HBoxContainer/Next")
+_playButton = NodePath("Contain/Frame/Frame/HBoxContainer/Play")
+_prevButton = NodePath("Contain/Frame/Frame/HBoxContainer/Prev")
+_resetButton = NodePath("Contain/Frame/Frame/HBoxContainer/Reset")
+_pauseButton = NodePath("Contain/Frame/Frame/HBoxContainer/Pause")
+_timer = NodePath("Timer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.326654, 0.399942, 0.330276, 1)
+
+[node name="Contain" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resource" type="VBoxContainer" parent="Contain"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Contain/Resource"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Resources"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Contain/Resource"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DataSource" type="VBoxContainer" parent="Contain/Resource/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Animations" type="VBoxContainer" parent="Contain"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Contain/Animations"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Animations"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Contain/Animations"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="AnimationSource" type="VBoxContainer" parent="Contain/Animations/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Parts" type="VBoxContainer" parent="Contain"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Contain/Parts"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Parts"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Contain/Parts"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Parts" type="VBoxContainer" parent="Contain/Parts/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CheckButton" type="CheckButton" parent="Contain/Parts/ScrollContainer/Parts"]
+layout_mode = 2
+text = "Check"
+
+[node name="Frame" type="VSplitContainer" parent="Contain"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Contain/Frame"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Current Frame"
+
+[node name="Frame" type="VBoxContainer" parent="Contain/Frame"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentFrame" type="TextureRect" parent="Contain/Frame/Frame"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+stretch_mode = 5
+
+[node name="FrameInfo" type="Label" parent="Contain/Frame/Frame"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "999/999"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Contain/Frame/Frame"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Prev" type="Button" parent="Contain/Frame/Frame/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Prev"
+
+[node name="Reset" type="Button" parent="Contain/Frame/Frame/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Reset"
+
+[node name="Pause" type="Button" parent="Contain/Frame/Frame/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Pause"
+
+[node name="Play" type="Button" parent="Contain/Frame/Frame/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Play"
+
+[node name="Next" type="Button" parent="Contain/Frame/Frame/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Next"
+
+[node name="Frames" type="VSplitContainer" parent="Contain"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Contain/Frames"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "All Frames"
+
+[node name="Frames" type="ScrollContainer" parent="Contain/Frames"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FramesContainer" type="GridContainer" parent="Contain/Frames/Frames"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.166667
